@@ -1,0 +1,157 @@
+/* ----------------- Spirit World Gradient ----------------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: rgb(248, 61, 61);
+  text-align: center;
+  overflow-x: hidden;
+  background: linear-gradient(-45deg, #0e0e2f, #2c1f4f, #1b0e3d, #0e0e2f);
+  background-size: 400% 400%;
+  animation: gradientBG 30s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----------------- Spirit Orbs ----------------- */
+#spirit-background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -2;  /* behind particles */
+  overflow: hidden;
+}
+
+.spirit {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1.5px) drop-shadow(0 0 6px rgba(180, 200, 255, 0.4));
+  width: 4px;
+  height: 4px;
+  animation-name: float;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background: rgba(180, 200, 255, 0.25);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+  10% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+  100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+}
+
+/* ----------------- Falling Snow Particles ----------------- */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -1; /* in front of orbs, behind content */
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  width: 4px; height: 4px;
+  background: rgba(180, 200, 255, 0.25);
+  filter: blur(1px) drop-shadow(0 0 4px rgba(180, 200, 255, 0.3));
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0px); opacity: 0; }
+  10% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ----------------- Page Layout ----------------- */
+header {
+  padding: 30px 0;
+}
+
+nav {
+  background: #111;
+  padding: 10px 0;
+}
+
+nav a {
+  color: #dde4e2;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  margin: 50px 20px;
+}
+
+.music-list, .featured, .content {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.track {
+  background: #161616;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateX(-50px);
+  animation: slideIn 0.5s forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+.track h3 {
+  color: #d5dad9;
+}
+
+.track img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.5 ease;
+  animation: floatArt 4s ease-in-out infinite;
+}
+
+.track:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(175, 76, 167, 0.5);
+  transition: transform 0.3s, bow-shadow 0.3s;
+}
+
+/* ----------------- Page Fade Transitions ----------------- */
+body {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+}
